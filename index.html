@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>📦 Package Delivery Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet (Map) -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+  ></script>
+
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <h1>📦 Package Delivery Tracker</h1>
+      <div class="actions">
+        <button id="notifyBtn" title="Enable notifications">🔔</button>
+        <button id="themeToggle" title="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="card">
+        <div class="search-row">
+          <input id="trackingInput" placeholder="Enter tracking number (e.g., TM123456789)" />
+          <button id="trackBtn">Track</button>
+        </div>
+        <div class="hint">
+          Try demo numbers:
+          <button class="chip" data-tn="TM123456789">TM123456789</button>
+          <button class="chip" data-tn="TM987654321">TM987654321</button>
+          <button class="chip" data-tn="TM555000111">TM555000111</button>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h3>Status</h3>
+          <div id="summary">
+            <div class="big" id="statusText">—</div>
+            <div class="muted" id="lastUpdate">Last update: —</div>
+            <div class="muted" id="carrier">Carrier: MockExpress</div>
+            <div class="muted" id="trackingNum">Tracking: —</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>ETA</h3>
+          <div id="etaBox">
+            <div class="big" id="etaCountdown">—</div>
+            <div class="muted" id="etaExact">Estimated delivery: —</div>
+          </div>
+        </div>
+
+        <div class="card map-card">
+          <h3>Map</h3>
+          <div id="map"></div>
+        </div>
+
+        <div class="card">
+          <h3>Timeline</h3>
+          <ul id="timeline" class="timeline"></ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <small>Map: © OpenStreetMap contributors · This is a demo with mock data.</small>
+    </footer>
+  </div>
+
+  <div id="toastContainer" aria-live="polite"></div>
+</body>
+</html>
